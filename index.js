@@ -12,7 +12,7 @@ var serveFavicon = require('serve-favicon');
 var app = express();
 var MongoClient = require('mongodb').MongoClient;
 var url = require('url');
-
+console.log('I am here');
 /*var assert = require('assert');*/
 
 function has_props(obj) {
@@ -184,7 +184,7 @@ app.get(/\/(?!(new\/))[A-Za-z0-9]+$/, function (req, res, next) {
     });
     if (!!(!doc)) {
       return res.json({
-        error: "This url: [" + base_uri+"/"+ hash + "] is not in the database."
+        error: "This url: [" + base_uri+ "/"+ hash + "] is not in the database."
       });
     }
     res.set({
