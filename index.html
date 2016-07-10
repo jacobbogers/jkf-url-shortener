@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <title>FavIcon</title>
+      <!-- MY CSS-->
+      <link href="css/app.css" rel="stylesheet">
+</head>
+
+<body>
+      <div id="container-anchor" class="flex-row-flow flex-row-halign-center">
+            <div class="inner-canvas">
+                  <header style="text-align:center;">
+                        <h1>URL shortener Microservice</h1>
+                  </header>
+                  <main>
+                        <span>Usage Examples:</span>
+                        <ul>
+                              <li>To shorent a link-url append after the link of this site after the word "new"
+                                    <p>
+                                          <code>https://jkf-url-shortener.herokuapp.com/new/http://google.com</code>
+                                    </p>
+
+                              </li>
+                              <li>To use a short link just enter the shortened link in your browser shorent a link-url append after the link of this site
+                                    <p>
+                                          <code>https://jkf-url-shortener.herokuapp.com/0123456</code>
+                                    </p>
+
+                              </li>
+                        </ul>
+                        <p>On Success will return:</p>
+                        <code>{ orig: "/new/http://www.facebook.com", base: "https://jkf-url-shortener.herokuapp.com/1244" }
+                        </code>
+                        <p>On Error will return:
+                              <p>
+                                    <code>{ error: "This url: [https://jkf-url-shortener.herokuapp.com/1244] is not in the database." }
+                                    </code>
+                  </main>
+                  <footer>
+                  </footer>
+            </div>
+      </div>
+      <!-- container -->
+</body>
+
+</html>

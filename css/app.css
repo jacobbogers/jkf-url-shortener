@@ -1,0 +1,203 @@
+/* general code style-ing */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300|Raleway:400,900,800,700,600,500,300,200|Lato:400,300,100);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:700,500,400,300,300italic,400italic,500,500italic);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+button, input, select, textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline; }
+
+html, body, div, dl, dt, dd, ul, ol, p, li, a, form, fieldset, input[type="text"], input[type="search"], blockquote, th, td {
+  margin: 0;
+  padding: 0; }
+
+ul, ol {
+  list-style: none; }
+
+a {
+  outline: none !important;
+  text-decoration: none;
+  color: #000; }
+
+input:focus, textarea:focus, keygen:focus, select:focus {
+  outline-offset: -2px; }
+
+div:before, select, * {
+  box-sizing: border-box; }
+
+button, input {
+  line-height: normal;
+  outline: none;
+  border: none; }
+
+html,
+body {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  margin: 0; }
+
+.flex-column-flow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+.flex-row-flow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row; }
+
+.flex-column-halign-center, .flex-row-valign-center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+              -ms-grid-row-align: center;
+          align-items: center; }
+
+.flex-column-vspace-around {
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
+
+.flex-column-valign-center, .flex-row-halign-center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%; }
+
+.flex-stretch {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+              -ms-grid-row-align: stretch;
+          align-items: stretch; }
+
+.h-center {
+  text-align: center; }
+
+.hide {
+  display: none;
+  visibility: hidden; }
+
+.invisible {
+  visibility: hidden; }
+
+.user-select-none {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: default; }
+
+          -ms-grid-row-align: center;
+     {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content; }
+
+.all-margin-auto {
+  margin: auto; }
+
+/* MARKING ELEMENTS */
+/* debug markers */
+/* debug markers */
+/* debug markers */
+.debug-white {
+  border: 1px white solid; }
+
+.debug-black {
+  border: 1px solid black; }
+
+.debug-red {
+  border: 1px solid red; }
+
+.debug-blue {
+  border: 1px solid blue; }
+
+.outline-r {
+  outline: 1px solid red; }
+
+.outline-g {
+  outline: 1px solid green; }
+
+.outline-b {
+  outline: 1px solid blue; }
+
+/*general decoration*/
+/*general decoration*/
+/*general decoration*/
+.rounded {
+  border-radius: 1rem; }
+
+.bck-w {
+  background-color: white !important; }
+
+.bck-darkened {
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.ncursor {
+  cursor: unset !important; }
+
+.dcursor {
+  cursor: default !important; }
+
+.p-small {
+  font-size: 0.7rem;
+  font-weight: bold; }
+
+.txt-white {
+  color: #EEE;
+  line-height: 1; }
+
+/* receipe */
+/* receipe */
+/* receipe */
+body {
+  background-image: -webkit-radial-gradient(bottom left circle, #663399 0%, #9966CC 50%, #CC99FF 100%);
+  background-image: radial-gradient(circle at bottom left, #663399 0%, #9966CC 50%, #CC99FF 100%); }
+
+.gr-txt {
+  color: green; }
+
+#container-anchor {
+  padding: 1em 0;
+  height: 100%; }
+
+.inner-canvas {
+  background: white;
+  /*border-radius:2px;*/
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: "Open Sans";
+  padding: 0.5em;
+  position: relative;
+  height: 100%;
+  overflow-y: auto; }
+  .inner-canvas p {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em; }
+  .inner-canvas h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    font-weight: bold; }
+  .inner-canvas dir,
+  .inner-canvas menu,
+  .inner-canvas ul {
+    display: block;
+    list-style-type: disc;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 40px; }
+  .inner-canvas li {
+    display: list-item; }
+
+/*# sourceMappingURL=app.css.map */
