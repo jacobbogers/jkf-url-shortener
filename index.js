@@ -27,7 +27,7 @@ function is_number(str) {
 //listen port expressjs
 var port = process.env.PORT;
 // Connection URL DB
-var url_mongo = process.env.URI_MONGO; 
+var url_mongo = process.env.URI_MONGO;
 var base_uri = process.env.BASE_URI.trim();
 var delayed_resource = {};
 //Use connect method to connect to the server
@@ -148,7 +148,7 @@ app.get('/new/*', function (req, res, next) {
         console.log("insertOne  thenable");
         console.log('record inserted:' + JSON.stringify(Object.keys(result)));
         res.json({
-          orig: req.originalUrl,
+          orig: url_raw,
           base: base_uri + "/" + seq
         });
       }).catch(function (err) {
