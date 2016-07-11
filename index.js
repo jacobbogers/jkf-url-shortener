@@ -27,7 +27,7 @@ function is_number(str) {
 //listen port expressjs
 var port = process.env.PORT;
 // Connection URL DB
-var url_mongo = process.env.URI_MONGO; //'mongodb://jkfmongo:Belarus123@ds017205.mlab.com:17205/storev2';
+var url_mongo = process.env.URI_MONGO; 
 var base_uri = process.env.BASE_URI.trim();
 var delayed_resource = {};
 //Use connect method to connect to the server
