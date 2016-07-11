@@ -75,6 +75,7 @@ function get_next_pk() {
   if (!delayed_resource.db) {
     return Promise.reject("Database connection initializing, moment, try again in a few seconds");
   }
+  console.log("start next pk");
   var db = delayed_resource.db;
   var seq_incr = Math.trunc(1 + Math.random() * 10);
   console.log({
@@ -85,7 +86,7 @@ function get_next_pk() {
     },
     null, {
       $inc: {
-        seq: seq_incr
+        seq: 1
       }
     }, {
       new: true
@@ -96,8 +97,8 @@ function get_next_pk() {
 }
 
 app.get('/new/*', function (req, res, next) {
-  // runs for all HTTP verbs first
-  // think of it as route specific middleware!
+  //-runs for all HTTP verbs first
+  //-think of it as route specific middleware!
   var url_raw = req.path.substr(5);
   var uri_obj = url.parse(url_raw);
 
@@ -111,6 +112,8 @@ app.get('/new/*', function (req, res, next) {
   }
   //shorthand
   var db = delayed_resource.db;
+  console.log('wanting to add a new url but checking if it already exist');
+  console.log('calling findOne');
   var promise = db.collection('mapping').findOne({
     from: url_raw
   }, {
@@ -119,23 +122,30 @@ app.get('/new/*', function (req, res, next) {
     _id: 0
   });
   var seq;
-  console.log("search existing?");
+  console.log("promise received");
   promise.then(function (doc) {
+    console.log("promise thenable");
     if (doc != undefined) {
       return res.json({
         original_url: doc.from,
-        short_url: base_uri+ "/" + doc.to
+        short_url: base_uri + "/" + doc.to
       });
     }
+    console.log("going to call get_next_pk");
     var new_hash_promise = get_next_pk(); //create hash and insert it
+    console.log("promise from get_next_pk received");
     new_hash_promise.then(function (result) {
+      console.log("in pk thenable");
       console.log('pk got changed:' + JSON.stringify(Object.keys(result)));
       seq = result.value.seq;
+      console.log("trying to call insertOne");
       var insert_promise = db.collection("mapping").insertOne({
         from: url_raw,
         to: seq
       });
+      console.log("insertOne  promise received");
       insert_promise.then(function (result) {
+        console.log("insertOne  thenable");
         console.log('record inserted:' + JSON.stringify(Object.keys(result)));
         res.json({
           orig: req.originalUrl,
@@ -145,6 +155,7 @@ app.get('/new/*', function (req, res, next) {
         console.log("database insert error:" + err);
         next(err);
       });
+      console.log("pk thenable exit");
     }).catch(function (err) {
       console.log("database update error:" + err);
       next(err);
@@ -170,13 +181,18 @@ app.get(/\/(?!(new\/))[A-Za-z0-9]+$/, function (req, res, next) {
   }
   //shorthand
   var db = delayed_resource.db;
+  console.log('lookup via findone');
+  var num = Number.parseInt(hash);
+  num = Number.isNaN(num) ? 0 : num;
+  console.log("number was:" + num);
   var promise = db.collection('mapping').findOne({
-    to: Number.parseInt(hash)
+    to: num
   }, {
     from: 1,
     to: 1,
     _id: 0
   });
+  console.log('lookup promise received');
   promise.then(function (doc) {
     console.log({
       tag: "doc-lookup",
@@ -184,7 +200,7 @@ app.get(/\/(?!(new\/))[A-Za-z0-9]+$/, function (req, res, next) {
     });
     if (!!(!doc)) {
       return res.json({
-        error: "This url: [" + base_uri+ "/"+ hash + "] is not in the database."
+        error: "This url: [" + base_uri + "/" + hash + "] is not in the database."
       });
     }
     res.set({
@@ -199,7 +215,7 @@ app.get(/\/(?!(new\/))[A-Za-z0-9]+$/, function (req, res, next) {
     });
     next(err);
   });
-
+  console.log('app.get function exit');
 });
 
 app.use('/css', express.static(__dirname + '/css'));
