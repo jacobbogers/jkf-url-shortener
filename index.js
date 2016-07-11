@@ -12,7 +12,7 @@ var serveFavicon = require('serve-favicon');
 var app = express();
 var MongoClient = require('mongodb').MongoClient;
 var url = require('url');
-console.log('I am here');
+
 /*var assert = require('assert');*/
 
 function has_props(obj) {
@@ -28,7 +28,7 @@ function is_number(str) {
 var port = process.env.PORT;
 // Connection URL DB
 var url_mongo = process.env.URI_MONGO; //'mongodb://jkfmongo:Belarus123@ds017205.mlab.com:17205/storev2';
-var base_uri = process.env.BASE_URI;
+var base_uri = process.env.BASE_URI.trim();
 var delayed_resource = {};
 //Use connect method to connect to the server
 MongoClient.connect(url_mongo, function (err, db) {
@@ -124,7 +124,7 @@ app.get('/new/*', function (req, res, next) {
     if (doc != undefined) {
       return res.json({
         original_url: doc.from,
-        short_url: base_uri + "/" + doc.to
+        short_url: base_uri+ "/" + doc.to
       });
     }
     var new_hash_promise = get_next_pk(); //create hash and insert it
